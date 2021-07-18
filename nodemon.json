@@ -1,0 +1,5 @@
+{
+  "ignore": [
+    "cc-ws-front/*"
+  ]
+}

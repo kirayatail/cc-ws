@@ -1,0 +1,15 @@
+{
+  "name": "cc-ws",
+  "version": "1.0.0",
+  "description": "Websocket controller for extreme reactors",
+  "main": "index.js",
+  "author": "Max Witt",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "ws": "^7.5.0"
+  }
+}
