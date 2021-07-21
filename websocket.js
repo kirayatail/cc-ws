@@ -27,6 +27,7 @@ module.exports = () => {
           sock: ws
         });
         ws.on('close', (ws) => {
+          console.log(`client ${id} disconnected`);
           clients.splice(clients.findIndex(c => c.id === id), 1);
           clients.filter(c => c.type === 'controller').forEach(c => {
             c.sock.send(JSON.stringify({
@@ -71,7 +72,6 @@ module.exports = () => {
           id: data.id,
           payload: clientToSend(clients[clients.findIndex(c => c.id === data.id)])
         })));
-        console.log('Clients:', clients.map(clientToSend));
       }
       if (data.type === 'command') {
         clients.find(c => c.id === data.id)?.sock.send(msg);

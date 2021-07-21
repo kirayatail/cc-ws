@@ -3,10 +3,7 @@ const wsServer = require('./websocket.js')();
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-
-app.get('/', (req,res) => {
-  res.send("Hello World");
-});
+app.use(express.static('cc-ws-front/build'))
 
 app.get('/socketport', (req, res) => {
   res.json(PORT);
