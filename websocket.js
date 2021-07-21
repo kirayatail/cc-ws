@@ -79,6 +79,12 @@ module.exports = () => {
     });
   });
 
+  setInterval(() => {
+    clients.forEach(c => c.sock.send(JSON.stringify({
+      type: 'ping'
+    })));
+  }, 10000)
+
   return wss;
 }
 
