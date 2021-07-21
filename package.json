@@ -6,6 +6,9 @@
   "author": "Max Witt",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "postinstall": "npm --prefix cc-ws-front/ run build"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
