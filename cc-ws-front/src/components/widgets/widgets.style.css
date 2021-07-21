@@ -1,0 +1,37 @@
+.widgets-container {
+  display: flex;
+  margin: 1em;
+  flex-wrap: wrap;
+}
+
+.widget {
+  margin: 1em;
+  min-width: 200px;
+  border-radius: 10px;
+  background-color: #596273;
+  padding: 0 .5em 1em .5em;
+}
+
+.method {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5em;
+}
+
+.text-input {
+  width: 50%
+}
+
+.toggle-button {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(0, 70, 0);
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-right: 1em;
+}
+
+.toggle-button.active {
+  background-color:rgb(0, 201, 0)
+}
