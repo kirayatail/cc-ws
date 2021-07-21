@@ -7,7 +7,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "postinstall": "npm --prefix cc-ws-front/ run build"
+    "install": "yarn --cwd cc-ws-front/ install",
+    "build": "yarn --cwd cc-ws-front/ build"
   },
   "dependencies": {
     "cors": "^2.8.5",
