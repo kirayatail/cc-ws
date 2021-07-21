@@ -5,10 +5,6 @@ const PORT = process.env.PORT || 4000;
 
 app.use(express.static('cc-ws-front/build'))
 
-app.get('/socketport', (req, res) => {
-  res.json(PORT);
-})
-
 const server = app.listen(PORT, () => {
   console.log("Express server running on " + PORT);
 });

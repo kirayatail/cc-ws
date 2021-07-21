@@ -12,9 +12,8 @@ function App() {
 
   useEffect(() => {
     if (!socketUrl) {
-      const host = location.hostname;
-      const protocol = location.protocol === 'http:' ? 'ws' : 'wss'
-      fetch('/socketport').then(r => r.json()).then(port => dispatch(setUrl(`${protocol}://${host}:${port}`)))
+      const url = location.origin.replace(/^http/, 'ws');
+      dispatch(setUrl(url));
     }
   }, [dispatch, socketUrl])
 
