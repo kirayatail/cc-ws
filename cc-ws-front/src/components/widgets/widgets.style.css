@@ -1,37 +1,78 @@
 .widgets-container {
   display: flex;
-  margin: 1em;
+  align-items: flex-start;
+  margin: 1rem;
   flex-wrap: wrap;
+  font-size: 1.5rem;
 }
 
 .widget {
-  margin: 1em;
+  margin: 1rem;
   min-width: 200px;
   border-radius: 10px;
   background-color: #596273;
-  padding: 0 .5em 1em .5em;
+  padding-bottom: 1rem;
 }
 
 .method {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .5em;
+  padding: .5rem 1rem;
 }
 
+.method label {
+  margin-right: .5em;
+}
+
+.method-radio {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+}
+
+.method-radio input[type="radio"] {
+  appearance: none;
+  background: rgb(0, 70, 0);
+  border-radius: 100%;
+  border: 1px solid white;
+  width: 30px;
+  height: 30px;
+  margin-left: 1em;
+}
+
+.method-radio input[type="radio"]:checked {
+  background: rgb(0, 201, 0);
+  box-shadow: none;
+}
+
+
 .text-input {
-  width: 50%
+  font-size: 1.5rem;
+
+  width: 5em
+}
+
+.toggle-button, .wide-button{
+  height: 30px;
+  border: 1px solid white;
+  color: white;
+  background-color: rgb(0, 70, 0);
+  border-radius: 5px;
+  margin-right: 1em;
+  margin-left: 1em;
 }
 
 .toggle-button {
   width: 30px;
-  height: 30px;
-  background-color: rgb(0, 70, 0);
-  border: 1px solid white;
-  border-radius: 5px;
-  margin-right: 1em;
 }
 
-.toggle-button.active {
+.wide-button {
+  width: 100%;
+}
+
+.toggle-button.active, .wide-button:active {
   background-color:rgb(0, 201, 0)
 }

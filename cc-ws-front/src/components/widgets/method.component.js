@@ -15,6 +15,20 @@ export default function Method({id, method}) {
     dispatch(sendMessage(message));
   }
   const buildMethod = (method) => {
+    if (method.type === 'number') {
+      return <input type="number" className="text-input" onChange={evt => send(parseInt(evt.target.value))} value={method.value}/>
+    }
+    if (method.type === 'radio') {
+      return (<div>
+        {method.options.map(opt => (
+          <div className="method-radio">
+            <label htmlFor={`${id}_${method.key}_${opt}`}>{opt}</label>
+            <input type="radio" id={`${id}_${method.key}_${opt}`} name={`${id}_${method.key}`} 
+            value={opt} checked={opt === method.value} onChange={evt => send(evt.target.value)} />
+          </div>
+        ))}
+      </div>)
+    }
     if (method.type === 'text') {
       return (<input type="text" className="text-input" onChange={(evt) => send(evt.target.value)} value={method.value}/>);
     }
@@ -25,13 +39,21 @@ export default function Method({id, method}) {
         />
       )
     }
+    if (method.type === 'void') {
+      return (
+        <button className="wide-button" onClick={() => send()}>
+          {method.name ? method.name : method.key}
+        </button>
+      )
+    }
   }
 
   return (
     <div className="method">
-      <label>
-        {method.name ? method.name : method.key}
-      </label>
+      {method.type !== 'void' && (
+        <label>
+          {method.name ? method.name : method.key}
+        </label> )}
       {buildMethod(method)}
     </div>
   )
