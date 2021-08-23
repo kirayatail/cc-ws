@@ -14,8 +14,9 @@ const clients = []
 module.exports = () => {
   const wss = new WebSocket.Server({ noServer: true });
 
-  wss.on('connection', (ws) =>  {
+  wss.on('connection', (ws, req) =>  {
     console.log('Connected to new socket')
+    console.log(req.socket.address());
     ws.on('message', (msg) => {
       const data = JSON.parse(msg)
       console.log('Message received:', data);
