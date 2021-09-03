@@ -1,24 +1,39 @@
 .widgets-container {
   display: flex;
   align-items: flex-start;
-  margin: 1rem;
+  margin: .5rem;
   flex-wrap: wrap;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .widget {
-  margin: 1rem;
+  margin: .5rem;
   min-width: 200px;
   border-radius: 10px;
   background-color: #596273;
   padding-bottom: 1rem;
 }
 
-.method {
+.widget h3 {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.method, .info-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: .5rem 1rem;
+}
+
+.widget-info {
+  background-color: #7A818F;
+  padding: .5rem 1rem;
+  font-size: 1.2rem;
+}
+
+.info-item {
+  padding: 0;
 }
 
 .method label {
@@ -40,7 +55,6 @@
   border: 1px solid white;
   width: 30px;
   height: 30px;
-  margin-left: 1em;
 }
 
 .method-radio input[type="radio"]:checked {
@@ -50,7 +64,7 @@
 
 
 .text-input {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 
   width: 5em
 }
@@ -75,4 +89,16 @@
 
 .toggle-button.active, .wide-button:active {
   background-color:rgb(0, 201, 0)
+}
+
+.info-warning {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 30px;
+  background-color: rgb(50, 0, 0);
+}
+
+.info-warning.active {
+  background-color: rgb(200, 0,0);
 }

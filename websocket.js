@@ -19,9 +19,9 @@ module.exports = () => {
     console.log(req.socket.address());
     ws.on('message', (msg) => {
       const data = JSON.parse(msg)
-      console.log('Message received:', data);
       if (data.type === 'handshake') {
         const id = clients.map(c => c.id).reduce((cand, c) => cand > c ? cand : c + 1, 0);
+        console.log(`Handshake with ${data.payload} ${id}`);
         clients.push({
           type: data.payload,
           id,
