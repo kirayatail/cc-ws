@@ -5,11 +5,26 @@ const clientToSend = (c) => {
     id: c.id,
     type: c.type,
     methods: c.methods,
-    info: c.info
+    info: c.info,
+    group: c.group,
+    hidden: c.hidden
   };
 }
 
 const clients = []
+
+const updateClient = (data)  => {
+  if (data.type === 'all') {
+    clients[clients.findIndex(c => c.id === data.id)] = data.payload
+  } else {
+    clients[clients.findIndex(c => c.id === data.id)][data.type] = data.payload
+  }
+  clients.filter(c => c.type === 'controller').forEach(c => c.sock.send(JSON.stringify({
+    type: 'info',
+    id: data.id,
+    payload: clientToSend(clients[clients.findIndex(c => c.id === data.id)])
+  })))
+}
 
 module.exports = () => {
   const wss = new WebSocket.Server({ noServer: true });
@@ -57,23 +72,10 @@ module.exports = () => {
           })
         }
       }
-      if (data.type === 'info') {
-  
-        clients[clients.findIndex(c => c.id === data.id)].info = data.payload
-        clients.filter(c => c.type === 'controller').forEach(c => c.sock.send(JSON.stringify({
-          type: 'info',
-          id: data.id,
-          payload: clientToSend(clients[clients.findIndex(c => c.id === data.id)])
-        })))
+      if (['info', 'methods', 'group', 'hidden', 'all'].includes(data.type)) {
+        updateClient(data)
       }
-      if (data.type === 'methods') {
-        clients[clients.findIndex(c => c.id === data.id)].methods = data.payload
-        clients.filter(c => c.type === 'controller').forEach(c => c.sock.send(JSON.stringify({
-          type: 'info',
-          id: data.id,
-          payload: clientToSend(clients[clients.findIndex(c => c.id === data.id)])
-        })));
-      }
+      
       if (data.type === 'command') {
         clients.find(c => c.id === data.id)?.sock.send(msg);
       }
