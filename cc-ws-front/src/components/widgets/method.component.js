@@ -16,7 +16,7 @@ export default function Method({id, method}) {
   }
   const buildMethod = (method) => {
     if (method.type === 'number') {
-      return <input type="number" className="text-input" onChange={evt => send(parseInt(evt.target.value))} value={method.value}/>
+      return <input type="number" min={method.min} max={method.max} className="text-input" onChange={evt => send(parseInt(evt.target.value))} value={method.value}/>
     }
     if (method.type === 'radio') {
       return (<div>
@@ -45,6 +45,19 @@ export default function Method({id, method}) {
           {method.name ? method.name : method.key}
         </button>
       )
+    }
+    if (method.type === 'dropdown') {
+      return (
+        <select className="text-input" onChange={evt => send(evt.target.value)} value={method.value}>
+          {method.options.map(opt => (
+            <option value={opt}>{opt}</option>
+          ))}
+        </select>
+      )
+    }
+
+    if (method.type === 'slider') {
+      return <input type="range" className="text-input" min={method.min ?? 0} max={method.max ?? 10} step="1"  onInput={evt => send(evt.target.value)} value={method.value} />
     }
   }
 

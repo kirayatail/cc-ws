@@ -14,7 +14,6 @@ const socketMiddleware = () => {
 
   const onMessage = store => (event) => {
     const payload = JSON.parse(event.data);
-    console.log('Message received:', payload)
     switch (payload.type) {
       case 'handshake':
         store.dispatch(connected(payload.id))

@@ -2,6 +2,7 @@
 export default function Info({info}) {
   const buildInfo = (i) => {
     if (i.type === 'number') {
+      console.log(i)
       return (<div className="info-value">
         {i.value.toFixed(2)}
       </div>)
