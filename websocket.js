@@ -15,7 +15,10 @@ const clients = []
 
 const updateClient = (data)  => {
   if (data.type === 'all') {
-    clients[clients.findIndex(c => c.id === data.id)] = data.payload
+    clients[clients.findIndex(c => c.id === data.id)] = {
+      ...clients[clients.findIndex(c => c.id === data.id)],
+      ...data.payload
+    }
   } else {
     clients[clients.findIndex(c => c.id === data.id)][data.type] = data.payload
   }
@@ -75,7 +78,7 @@ module.exports = () => {
       if (['info', 'methods', 'group', 'hidden', 'all'].includes(data.type)) {
         updateClient(data)
       }
-      
+
       if (data.type === 'command') {
         clients.find(c => c.id === data.id)?.sock.send(msg);
       }
