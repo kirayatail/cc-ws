@@ -6,16 +6,19 @@
   "author": "Max Witt",
   "license": "MIT",
   "private": true,
+  "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": "24"
+  },
   "scripts": {
     "install": "yarn --cwd cc-ws-front/ install",
     "build": "yarn --cwd cc-ws-front/ build"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "ws": "^7.5.0"
+    "express": "^5.1.0",
+    "ws": "^8.18.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.13"
+    "nodemon": "^3.1.10"
   }
 }

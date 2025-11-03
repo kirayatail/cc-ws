@@ -1,11 +1,11 @@
-const { addWidget, removeWidget, updateWidget } = require("../components/widgets/widgets.slice");
-const { connect, sendMessage, disconnect, connected, disconnected } = require("../socket.slice");
+import { addWidget, removeWidget, updateWidget } from "../components/widgets/widgets.slice";
+import { connect, sendMessage, disconnect, connected, disconnected } from "../socket.slice";
 
 const socketMiddleware = () => {
   let socket = null;
 
   const onOpen = store => (event) => {
-    store.dispatch(sendMessage({type: 'handshake', payload: 'controller'}));
+    store.dispatch(sendMessage({ type: 'handshake', payload: 'controller' }));
   }
 
   const onClose = store => () => {
