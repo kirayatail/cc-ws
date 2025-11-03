@@ -8,5 +8,7 @@ export default configureStore({
     widgets: widgetReducer,
     socket: socketReducer,
   },
-  middleware: [socketMiddleware]
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(socketMiddleware);
+  }
 });
